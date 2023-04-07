@@ -10,7 +10,7 @@ vector<int> findDuplicates(vector<int> &nums)
     }
     vector<int> answer;
     for(auto it: freq_map){
-        if(it.second == 2)
+        if(it.second == 2) 
             answer.push_back(it.first);
     }
     return answer;
