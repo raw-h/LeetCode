@@ -3,21 +3,27 @@ using namespace std;
 bool searchMatrix(vector<vector<int>> &matrix, int target)
 {
 
-    int row = 0;
-    int col = matrix[row].size() - 1;
-    while (row < matrix.size() && col >= 0)
+    int row = matrix.size();
+    int col = matrix[0].size();
+
+    int start = 0;
+    int end = row * col - 1;
+
+    while (start <= end)
     {
-        if (matrix[row][col] == target)
+        int mid = start + (end - start)/2;
+        int element = matrix[mid/col][mid%col];
+        if (element == target)
         {
             return true;
         }
-        if (matrix[row][col] < target)
+        if (element < target)
         {
-            row++;
+            start = mid + 1;
         }
         else
         {
-            col--;
+            end = mid - 1;
         }
     }
     return false;
