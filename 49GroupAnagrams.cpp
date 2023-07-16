@@ -14,6 +14,7 @@ vector<vector<string>> groupAnagrams(vector<string> &strs)
 
     for (int i = 0; i < copy_of.size(); i++)
         mapping[copy_of[i]].push_back(i);
+        
 
     for (auto &element : mapping)
     {
