@@ -46,6 +46,7 @@ int main()
     }
     int pivot = end;
     
+    
     start = 0;
     end = nums.size() - 1;
 
