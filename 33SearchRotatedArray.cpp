@@ -16,6 +16,7 @@ int binary_search(vector<int> &arr, int s, int e, int k)
         else if (arr[mid] < k)
             start = mid + 1;
     }
+    
     return -1;
 }
 
