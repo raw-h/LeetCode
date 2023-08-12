@@ -2,30 +2,47 @@
 using namespace std;
 int lengthOfLongestSubstring(string s)
 {
-    int count = 0;
-    int maxi = INT_MIN;
-    int arr[26] = {0};
+    // int count = 0;
+    // int maxi = INT_MIN;
+    // map<char, int> freq;
+    // for(int i = 0; i < s.length(); i++){
+    //     if(freq[s[i]] == 1){
+    //         freq.clear();
+    //         maxi = max(count, maxi);
+    //         i = i - count;
+    //         count = 0;
+    //     }
+    //     else{
+    //         freq[s[i]] = 1;
+    //         count++;
+    //     }
+    // }
+    // maxi = max(count, maxi);
+    // return maxi;
 
-    for(int i = 0; i < s.length(); i++){
-        if(arr[s[i] - 97] == 1){
-            arr[s[i] - 97] = 0;
-            maxi = max(count, maxi);
-            count = 0;
-            cout << "Count decreased to 0 at index"<< i << endl;
-            i = i - 1;
+    set<char> st;
+    int n = s.size();
+    int i = 0, j = 0;
+    int ans = 0;
+    while (j < n)
+    {
+        if (st.find(s[j]) == st.end())
+        {
+            st.insert(s[j]);
+            ans = max(ans, j - i + 1);
+            j++;
         }
-
-        else{
-            arr[s[i] - 97] = 1;
-            count++;
-            cout << "Count increased" << endl;
+        else
+        {
+            st.erase(s[i]);
+            i = i + 1;
         }
     }
-    return maxi;
+    return ans;
 }
 
 int main(){
-    string str = "abcabcbb";
+    string str = "aaaaaa abcdefaaaaaa";
 
     int max_length = lengthOfLongestSubstring(str);
 
