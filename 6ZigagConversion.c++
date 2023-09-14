@@ -7,12 +7,13 @@ string convert(string s, int numRows)
         return s;
     
     string answer = {};
+    int cycle = (numRows - 1) * 2;
     for(int i = 0; i < numRows; i++){
-        int increment = (numRows - 1) * 2;
-        for(int index = i; index < s.length(); index += increment){
-            answer.push_back(s[index]);
-            if(i != 0 && i != (numRows-1) && s[(index + increment) - (i * 2)])
-                answer.push_back(s[(index + increment) - (i * 2)]);
+        for(int j = i; j < s.length(); j += cycle){
+            answer.push_back(s[j]);
+            int k = j + cycle - (2 * i);
+            if(i != 0 && i != (numRows-1) && k < s.length())
+                answer.push_back(s[k]);
         }
     }
     return answer;
